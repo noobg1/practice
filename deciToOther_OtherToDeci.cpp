@@ -1,5 +1,20 @@
 #include <iostream>
+#include <string.h>
+#include <algorithm>
+
 using namespace std;
+
+string fromDeciTo(int num , int base)
+{
+	string ref = "0123456789ABCDEF";
+	string res;
+	while( num > 0){
+		res += ref[num % base];
+		num /= base;
+	}
+	reverse(res.begin(), res.end());
+	return res;
+}
 
 int decimalToOtherBase(int num, int base)
 {
@@ -15,7 +30,7 @@ int decimalToOtherBase(int num, int base)
 	return result;
 }
 
-int otherToDecimal(int num, int base)
+int otherToDeciamal(int num, int base)
 {
 	int multiplier = 1;
 	int result = 0;
@@ -30,10 +45,11 @@ int otherToDecimal(int num, int base)
 }
 
 int main() {
-	int num = 101;
-	int base = 2;
+	int num = 15;
+	int base = 16;
 	cout<<decimalToOtherBase(num,base)<<endl;;
-	cout<<otherToDecimal(num,base);
+	cout<<otherToDeciamal(num,base)<<endl;
+	cout<<fromDeciTo(num,base);
 	// your code goes here
 	return 0;
 }
